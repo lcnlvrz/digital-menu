@@ -25,15 +25,18 @@ export class Restaurant {
   location: string;
 
   @Column({ type: 'simple-array' })
-  schedule: [Date, Date];
+  scheduleHour: string[];
+
+  @Column({ type: 'simple-array' })
+  scheduleDays: string[];
 
   @Column()
   cellphone: number;
 
-  @Column()
+  @Column({ nullable: true })
   profilePhoto: string;
 
-  @Column()
+  @Column({ nullable: true })
   bannerPhoto: string;
 
   @Column()

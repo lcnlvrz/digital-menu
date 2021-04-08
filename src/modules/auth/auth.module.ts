@@ -13,7 +13,9 @@ import { Register } from './use-cases/register';
 @Module({
   imports: [
     UserModule,
-    PassportModule,
+    PassportModule.register({
+      defaultStrategy: 'jwt',
+    }),
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({

@@ -24,13 +24,14 @@ export class AuthController {
 
   @UseGuards(LocalStrategyGuard)
   @Post('login')
-  async executeLogin(@ReqUser() dto: User, @Req() test) {
+  async executeLogin(@ReqUser() dto: User) {
     return await this.login.execute({ email: dto.email, id: dto.id });
   }
 
   @UseGuards(JwtStrategyGuard)
   @Get('me')
-  async executeFindUser(@ReqUser() user: User): Promise<User> {
-    return await this.findUser.byIdWithoutPassword(user.id);
+  async executeFindUser(@Req() req): Promise<User> {
+    return req.user;
+    // return await this.findUser.byIdWithoutPassword(user.id);
   }
 }

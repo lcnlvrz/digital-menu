@@ -23,7 +23,6 @@ export class Register {
       });
     }
     const user = await this.createUser.execute(dto);
-    user.role = UserRoles.OWNER;
     const { accessToken } = await this.login.execute({
       email: user.email,
       id: user.id,

@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JWT_SECRET } from 'src/config/constants';
 import { FindUser } from '../../user/use-cases/find-user/find-user';
+import { User } from 'src/modules/user/entities/user.entity';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -18,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: any) {
-    return await this.findUser.byId(payload.id);
+  async validate(payload: any): Promise<User> {
+    return await this.findUser.byId(payload.sub);
   }
 }

@@ -12,7 +12,7 @@ import { FindUser } from 'src/modules/user/use-cases/find-user/find-user';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly findUser: FindUser) {
-    super({ usernameField: 'email' });
+    super({ usernameField: 'email', passwordField: 'password' });
   }
 
   async validate(email: string, password: string): Promise<User> {
@@ -33,7 +33,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       });
     }
 
-    delete user.password;
     return user;
   }
 }
