@@ -3,4 +3,5 @@ export const RegisterInitialValue = {
     lastName: '',
     email: '',
     password: '',
+    role: '',
 };

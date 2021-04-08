@@ -3,10 +3,11 @@ import { Logo } from '../../components/Logo/Logo';
 import { RegisterInitialValue } from '../../initial-values/Register';
 import { RegisterSchema } from '../../schema/Register';
 import { Button } from 'antd';
-import { Form, Input, SubmitButton } from 'formik-antd';
+import { Form, Input, SubmitButton, Radio } from 'formik-antd';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { useRegister } from '../../controllers/register.controller';
+import { UserRoles } from '../../interfaces/User';
 
 export const Register = (): JSX.Element => {
     const controller = useRegister();
@@ -39,7 +40,7 @@ export const Register = (): JSX.Element => {
                 </div>
                 <br />
                 <Formik
-                    onSubmit={(values) => controller.register(values)}
+                    onSubmit={(values) => controller.register({ ...values, role: [UserRoles.OWNER] })}
                     validationSchema={RegisterSchema}
                     initialValues={RegisterInitialValue}
                     render={() => (
@@ -60,6 +61,13 @@ export const Register = (): JSX.Element => {
                                 <label> Password </label>
                                 <Input.Password name="password" />
                             </Form.Item>
+                            <Radio.Group name="role">
+                                <Radio.Button name="role" value="OWNER">
+                                    Owner
+                                </Radio.Button>
+                            </Radio.Group>
+                            <br />
+                            <br />
                             <SubmitButton loading={controller.isLoading} className="w-full">
                                 {' '}
                                 Register{' '}

@@ -4,7 +4,7 @@ import { Dispatch } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RegisterInitialValue } from '../initial-values/Register';
-import { UseRegisterInterface } from '../interfaces/Register/register.interface';
+import { RegisterInterface, UseRegisterInterface } from '../interfaces/Register/register.interface';
 import { UserActionsTypes } from '../interfaces/User';
 import { AllActions } from '../redux/reducers/root-state.reducer';
 import { AuthService } from '../services/auth.service';
@@ -16,7 +16,8 @@ export const useRegister = (): UseRegisterInterface => {
 
     const dispatch: Dispatch<AllActions> = useDispatch();
 
-    const register = (input: typeof RegisterInitialValue) => {
+    const register = (input: RegisterInterface) => {
+        console.log(input);
         setIsLoading(true);
         authService
             .register(input)

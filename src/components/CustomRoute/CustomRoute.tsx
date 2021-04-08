@@ -15,16 +15,16 @@ export const CustomRoute = (props: CustomRouteInterface): JSX.Element => {
 
     useEffect(() => {
         if (!user.isLoading) {
-            switch (props?.role) {
+            switch (props.role[0]) {
                 case UserRoles.OWNER:
-                    if (user.role === UserRoles.OWNER) {
+                    if (user.role[0] === UserRoles.OWNER) {
                         return setReturnedRoutes(<Route {...props} />);
                     } else {
                         return setReturnedRoutes(<Redirect to="/login" />);
                     }
 
                 default:
-                    if (user.role === UserRoles.OWNER) {
+                    if (user.role[0] === UserRoles.OWNER) {
                         return setReturnedRoutes(<Redirect to="/" />);
                     } else {
                         return setReturnedRoutes(<Route {...props} />);

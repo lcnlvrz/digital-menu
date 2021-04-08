@@ -1,12 +1,20 @@
 import { RegisterInitialValue } from '../../initial-values/Register';
-import { UserInterface } from '../User';
+import { UserInterface, UserRoles } from '../User';
 
 export interface UseRegisterInterface {
-    register: (input: typeof RegisterInitialValue) => void;
+    register: (input: RegisterInterface) => void;
     isLoading: boolean;
 }
 
 export interface RegisterOutputDto {
     accessToken: string;
     user: UserInterface;
+}
+
+export interface RegisterInterface {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: UserRoles[];
 }

@@ -1,5 +1,3 @@
-import { CombinedState } from 'redux';
-
 export enum UserRoles {
     OWNER = 'OWNER',
     CUSTOMER = 'CUSTOMER',
@@ -10,7 +8,7 @@ export interface UserInterface {
     lastName: string;
     email: string;
     id: number;
-    role?: UserRoles;
+    role: UserRoles[];
 }
 
 export interface UserLoading {

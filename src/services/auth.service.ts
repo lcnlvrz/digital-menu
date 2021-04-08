@@ -3,7 +3,7 @@ import { axiosAPI } from '../axios/axios.instance';
 
 import { LoginInitialValue } from '../initial-values/Login/login.initial-value';
 import { RegisterInitialValue } from '../initial-values/Register';
-import { RegisterOutputDto } from '../interfaces/Register/register.interface';
+import { RegisterInterface, RegisterOutputDto } from '../interfaces/Register/register.interface';
 import { UserInterface } from '../interfaces/User';
 
 export class AuthService {
@@ -13,7 +13,7 @@ export class AuthService {
         });
     }
 
-    async register(input: typeof RegisterInitialValue): Promise<AxiosResponse<RegisterOutputDto>> {
+    async register(input: RegisterInterface): Promise<AxiosResponse<RegisterOutputDto>> {
         return await axiosAPI.post('/auth/register', input);
     }
 
