@@ -4,6 +4,6 @@ export const RestaurantInitialValue = {
     location: '',
     cellphone: '',
     isDelivery: false,
-    scheduleHour: ['05:04:78', '15:04:78'],
+    scheduleHour: [''],
     scheduleDays: ['Monday'],
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, TimePicker, Steps, Button, message } from 'antd';
 import { useModalCreateRestaurant } from '../../controllers/modal-create-restaurant';
-import { Form, Input, SubmitButton, InputNumber, Switch, DatePicker, Radio, Select } from 'formik-antd';
+import { Form, Input, SubmitButton, InputNumber, Switch, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { RestaurantSchema } from '../../schema/Restaurant/restaurant.schema';
 import { RestaurantInitialValue } from '../../initial-values/Restaurant/restaurant.initial-value';
@@ -16,7 +16,7 @@ export const ModalCreateRestaurant = (): JSX.Element => {
             closeIcon={null}
             visible={controller.isOpen}
         >
-            <p className="text-black">
+            <p className="text-black text-lg">
                 {' '}
                 It seems like it&apos;s your first time here. First of all, create your restaurant!{' '}
             </p>
@@ -25,7 +25,7 @@ export const ModalCreateRestaurant = (): JSX.Element => {
                 initialValues={RestaurantInitialValue}
                 validationSchema={RestaurantSchema}
             >
-                {({ setValues, values, setErrors, errors, touched, setTouched }) => (
+                {({ setValues, values, errors, setErrors }) => (
                     <Form>
                         <Form.Item name="name">
                             <label> Name </label>
@@ -43,16 +43,10 @@ export const ModalCreateRestaurant = (): JSX.Element => {
                             <label> Schedule Hour </label>
                             <br />
                             <TimePicker.RangePicker
-                                onBlur={(e) => {
-                                    if (!e.target.value) {
-                                        setErrors({ ...errors, scheduleHour: 'Required!' });
-                                        setTouched({ ...touched, scheduleHour: true });
-                                    }
+                                onChange={(_, stringFormat) => {
+                                    setValues({ ...values, scheduleHour: stringFormat });
                                 }}
-                                onChange={(_, timeString) => {
-                                    setValues({ ...values, scheduleHour: timeString });
-                                }}
-                                format=""
+                                format="h:mm a"
                                 style={{ width: '100%' }}
                             />
                         </Form.Item>
@@ -84,7 +78,21 @@ export const ModalCreateRestaurant = (): JSX.Element => {
                         <Switch name="isDelivery" />
                         <br />
                         <br />
-                        <SubmitButton loading={controller.isLoading}> Create Restaurant </SubmitButton>
+                        <SubmitButton
+                            onClick={(_) => {
+                                if (values.scheduleHour.length !== 2) {
+                                    setErrors({ ...errors, scheduleHour: 'Required!' });
+                                } else if (!values.scheduleDays.length) {
+                                    setErrors({ ...errors, scheduleDays: 'Required!' });
+                                } else {
+                                    setErrors({});
+                                }
+                            }}
+                            loading={controller.isLoading}
+                        >
+                            {' '}
+                            Create Restaurant{' '}
+                        </SubmitButton>
                     </Form>
                 )}
             </Formik>

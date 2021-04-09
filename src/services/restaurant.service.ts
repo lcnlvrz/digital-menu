@@ -14,4 +14,11 @@ export class RestaurantService {
     ): Promise<AxiosResponse<CreateRestaurantResponse>> {
         return await axiosAPI.post('/restaurant', input, { headers: { Authorization: 'Bearer' + ' ' + token } });
     }
+
+    async updateRestaurant(
+        input: Partial<RestaurantInterface>,
+        token: string,
+    ): Promise<AxiosResponse<CreateRestaurantResponse>> {
+        return await axiosAPI.put('/restaurant', input, { headers: { Authorization: 'Bearer' + ' ' + token } });
+    }
 }

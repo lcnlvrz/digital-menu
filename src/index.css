@@ -13,3 +13,9 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+button.ant-btn.ant-btn-icon-only.ant-input-search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
