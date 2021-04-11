@@ -17,6 +17,9 @@ export const restaurantReducer: Reducer<RestaurantReducerInterface, RestaurantAc
         case RestaurantActionsTypes.CLEAR_RESTAURANT:
             return { ...state, isLoading: false };
 
+        case RestaurantActionsTypes.UPDATE_RESTAURANT:
+            return { ...state, ...action.payload };
+
         default:
             return state;
     }

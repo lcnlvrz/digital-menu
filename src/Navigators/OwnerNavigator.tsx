@@ -3,6 +3,7 @@ import { Layout, Menu, Avatar } from 'antd';
 import { Header } from '../components/Header';
 import { MyMenus } from '../pages/MyMenus/MyMenus';
 import { MyRestaurant } from '../pages/MyRestaurant/MyRestaurant';
+import { ModalCreateRestaurant } from '../components/ModalCreateRestaurant/ModalCreateRestaurant';
 
 export const OwnerNavigator = (): JSX.Element => {
     return (
@@ -17,6 +18,7 @@ export const OwnerNavigator = (): JSX.Element => {
             <Layout className="site-layout">
                 <Header />
                 <Layout.Content style={{ margin: '0 16px' }}>
+                    <ModalCreateRestaurant />
                     <MyRestaurant />
                 </Layout.Content>
                 <Layout.Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Layout.Footer>

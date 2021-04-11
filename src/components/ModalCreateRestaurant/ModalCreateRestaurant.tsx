@@ -31,9 +31,15 @@ export const ModalCreateRestaurant = (): JSX.Element => {
                             <label> Name </label>
                             <Input name="name" />
                         </Form.Item>
-                        <Form.Item name="description">
+                        <Form.Item id="description" name="description">
                             <label> Description </label>
-                            <Input.TextArea autoSize={{ maxRows: 3, minRows: 3 }} name="description" />
+                            <Input.TextArea
+                                onChange={(e) => {
+                                    setValues({ ...values, description: e.target.value });
+                                }}
+                                autoSize={{ maxRows: 3, minRows: 3 }}
+                                name="description"
+                            />
                         </Form.Item>
                         <Form.Item name="location">
                             <label> Location </label>

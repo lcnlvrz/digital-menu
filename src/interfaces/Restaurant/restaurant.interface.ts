@@ -7,7 +7,7 @@ export interface RestaurantInterface {
     description: string;
     location: string;
     scheduleDays: string[];
-    scheduleHour: [string, string];
+    scheduleHour: string[];
     cellphone: number;
     profilePhoto: string;
     bannerPhoto: string;
@@ -38,11 +38,13 @@ export const RestaurantInitialState: RestaurantReducerInterface = {
 export enum RestaurantActionsTypes {
     SET_RESTAURANT = 'SET_RESTAURANT',
     CLEAR_RESTAURANT = 'CLEAR_RESTAURANT',
+    UPDATE_RESTAURANT = 'UPDATE_RESTAURANT',
 }
 
 export type RestaurantActions =
     | { type: RestaurantActionsTypes.SET_RESTAURANT; payload: Partial<RestaurantInterface> }
-    | { type: RestaurantActionsTypes.CLEAR_RESTAURANT };
+    | { type: RestaurantActionsTypes.CLEAR_RESTAURANT }
+    | { type: RestaurantActionsTypes.UPDATE_RESTAURANT; payload: Partial<RestaurantInterface> };
 
 export interface UseCreateRestaurant {
     isOpen: boolean;
