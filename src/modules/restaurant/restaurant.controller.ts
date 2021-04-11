@@ -23,7 +23,6 @@ export class RestaurantController {
     @Body() dto: CreateRestaurantDto,
     @ReqUser() owner: User,
   ) {
-    console.log(dto);
     return await this.createRestaurant.execute(dto, owner);
   }
 
@@ -36,7 +35,7 @@ export class RestaurantController {
   @UseGuards(JwtStrategyGuard)
   @Put()
   async executeUpdateRestaurant(
-    dto: UpdateRestaurantDto,
+    @Body() dto: UpdateRestaurantDto,
     @ReqUser() owner: User,
   ): Promise<Restaurant> {
     return await this.updateRestaurant.execute(dto, owner);

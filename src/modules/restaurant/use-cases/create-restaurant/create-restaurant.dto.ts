@@ -46,13 +46,10 @@ export class CreateRestaurantDto {
   cellphone: number;
 
   @IsString()
-  @IsUrl()
   @IsOptional()
   bannerPhoto: string;
 
   @IsString()
-  @IsUrl()
-  @IsNotEmpty()
   @IsOptional()
   profilePhoto: string;
 
