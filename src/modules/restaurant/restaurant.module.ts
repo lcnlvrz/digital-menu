@@ -11,5 +11,6 @@ import { UpdateRestaurant } from './use-cases/update-restaurant/update-restauran
   imports: [TypeOrmModule.forFeature([Restaurant, Review])],
   controllers: [RestaurantController],
   providers: [CreateRestaurant, GetRestaurant, UpdateRestaurant],
+  exports: [GetRestaurant],
 })
 export class RestaurantModule {}

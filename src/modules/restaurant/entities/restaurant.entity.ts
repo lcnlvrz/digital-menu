@@ -1,3 +1,4 @@
+import { Menu } from 'src/modules/menu/entities/menu.entity';
 import { User } from 'src/modules/user/entities/user.entity';
 import {
   Column,
@@ -5,6 +6,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -45,6 +47,9 @@ export class Restaurant {
   @OneToOne(() => User)
   @JoinColumn()
   owner: User;
+
+  @OneToMany(() => Menu, (menu) => menu.restaurant)
+  menus: Menu[];
 
   @ManyToMany(() => Review)
   @JoinTable()

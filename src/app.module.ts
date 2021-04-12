@@ -11,6 +11,7 @@ import {
   DB_USERNAME2,
 } from './config/constants';
 import { AuthModule } from './modules/auth/auth.module';
+import { MenuModule } from './modules/menu/menu.module';
 import { RestaurantModule } from './modules/restaurant/restaurant.module';
 
 @Module({
@@ -31,6 +32,7 @@ import { RestaurantModule } from './modules/restaurant/restaurant.module';
     }),
     AuthModule,
     RestaurantModule,
+    MenuModule,
   ],
   controllers: [AppController],
   providers: [AppService],

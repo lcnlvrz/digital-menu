@@ -16,6 +16,8 @@ export class GetRestaurant {
       .createQueryBuilder('restaurant')
       .leftJoin('restaurant.owner', 'owner')
       .where('owner.id = :ownerId', { ownerId: owner.id })
+      .leftJoinAndSelect('restaurant.menus', 'menu')
+      .leftJoinAndSelect('menu.plates', 'plate')
       .getOne();
   }
 }
