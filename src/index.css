@@ -19,3 +19,27 @@ button.ant-btn.ant-btn-icon-only.ant-input-search-button {
     align-items: center;
     justify-content: center;
 }
+
+.ant-image-preview-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.ant-tag.edit-tag.transition-all {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    justify-content: start;
+}
+
+.ant-form-item-control-input-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.full-w-children > * {
+    width: 100%;
+}

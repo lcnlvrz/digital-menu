@@ -19,7 +19,7 @@ export const OwnerNavigator = (): JSX.Element => {
                 <Header />
                 <Layout.Content style={{ margin: '0 16px' }}>
                     <ModalCreateRestaurant />
-                    <MyRestaurant />
+                    <MyMenus />
                 </Layout.Content>
                 <Layout.Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Layout.Footer>
             </Layout>

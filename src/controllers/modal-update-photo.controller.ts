@@ -4,7 +4,7 @@ import { RcFile, UploadFile } from 'antd/lib/upload/interface';
 import { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';
 import { useUpdateRestaurant } from '../hooks/useUpdateRestaurant';
-import { ImageService } from '../services/image-service';
+import { ImageService } from '../services/image.service';
 import { Photo } from './my-restaurant.controller';
 
 export interface UseModalUpdatePhotoParams {
